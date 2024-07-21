@@ -16,9 +16,10 @@
 
 import 'dart:ffi';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:quiver/check.dart';
 import 'package:tflite_flutter/src/bindings/bindings.dart';
 import 'package:tflite_flutter/src/bindings/tensorflow_lite_bindings_generated.dart';
@@ -120,18 +121,18 @@ class Interpreter {
   /// ```dart
   /// final interpreter = await tfl.Interpreter.fromAsset('assets/your_model.tflite');
   /// ```
-  static Future<Interpreter> fromAsset(String assetName,
-      {InterpreterOptions? options}) async {
-    Uint8List buffer = await _getBuffer(assetName);
-    return Interpreter.fromBuffer(buffer, options: options);
-  }
+  // static Future<Interpreter> fromAsset(String assetName,
+  //     {InterpreterOptions? options}) async {
+  //   Uint8List buffer = await _getBuffer(assetName);
+  //   return Interpreter.fromBuffer(buffer, options: options);
+  // }
 
-  /// Get byte buffer
-  static Future<Uint8List> _getBuffer(String assetFileName) async {
-    ByteData rawAssetFile = await rootBundle.load(assetFileName);
-    final rawBytes = rawAssetFile.buffer.asUint8List();
-    return rawBytes;
-  }
+  // /// Get byte buffer
+  // static Future<Uint8List> _getBuffer(String assetFileName) async {
+  //   ByteData rawAssetFile = await rootBundle.load(assetFileName);
+  //   final rawBytes = rawAssetFile.buffer.asUint8List();
+  //   return rawBytes;
+  // }
 
   /// Creates interpreter from an address.
   ///
