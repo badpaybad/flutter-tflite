@@ -22,7 +22,8 @@ import 'package:quiver/check.dart';
 import 'package:tflite_flutter/src/bindings/bindings.dart';
 import 'package:tflite_flutter/src/bindings/tensorflow_lite_bindings_generated.dart';
 import 'package:tflite_flutter/src/util/byte_conversion_utils.dart';
-import 'package:flutter/foundation.dart';
+
+// import 'package:flutter/foundation.dart';//dunp: comment cause it depend on dart:ui
 
 import 'ffi/helper.dart';
 import 'quanitzation_params.dart';
@@ -253,7 +254,24 @@ class Tensor {
 
     return inputShape;
   }
-
+  ///dunp: it come from foundation.dart but it depend on dart:ui so copy to here
+  bool listEquals<T>(List<T>? a, List<T>? b) {
+    if (a == null) {
+      return b == null;
+    }
+    if (b == null || a.length != b.length) {
+      return false;
+    }
+    if (identical(a, b)) {
+      return true;
+    }
+    for (int index = 0; index < a.length; index += 1) {
+      if (a[index] != b[index]) {
+        return false;
+      }
+    }
+    return true;
+  }
   @override
   String toString() {
     return 'Tensor{_tensor: $_tensor, name: $name, type: $type, shape: $shape, data: ${data.length}}';

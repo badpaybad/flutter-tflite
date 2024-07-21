@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 /// TensorFlow Lite for Flutter
+/// dunp: modify to run both flutter and dart cli
 library tflite_flutter;
 
 import 'package:ffi/ffi.dart';
